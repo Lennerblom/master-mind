@@ -16,7 +16,7 @@ const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'black', 'white', 'b
 //const randomArr = [];
 const attemptArr = ['_ ', '_ ', '_ ', '_ ', '_'];
 //const clueArr = [];
-const option1 = null;
+// const option1 = {value: '_', label: '_'};
 const option2 = null;
 const option3 = null;
 const option4 = null;
@@ -28,11 +28,11 @@ export default class Game extends Component {
         this.state = {
             hiddenView: true,
             solution: [],
-            option1: null,
-            option2: null,
-            option3: null,
-            option4: null,
-            option5: null,
+            option1: {value: '_', label: '_'},
+            option2: {value: '_', label: '_'},
+            option3: {value: '_', label: '_'},
+            option4: {value: '_', label: '_'},
+            option5: {value: '_', label: '_'},
         }
     }
 
@@ -62,15 +62,19 @@ export default class Game extends Component {
       };
       this.setState(changedBit);
       }
-      handleChange = (option) => {
-          let val = option;
+      handleChange = (e) => {
+        console.log('name',e.name);
+          let val = e.value;
           console.log('value',val);
-          if(val === option1){
+          
+          if(val === this.state.option1){
             this.setState({ option1: val });
+            console.log('option1',this.state.option1)
             return;
           }
-          else if(val === option2){
+          else if(val.id === 2){
             this.setState({ option2: val });
+            console.log('option2',this.state.option2)
             return;
           }
           else if(val === option3){
@@ -95,20 +99,26 @@ export default class Game extends Component {
                 <button onClick={this.generateRandom}>new game</button>
                 <h2>{this.state.solution}</h2>
                 <h2>{attemptArr} <button onClick={this.submitAttempt}>submit</button></h2>
+
+                {/* <h2 className='selectMenu'>{option1.label} */}
                 <Select
-                    value={option1}
+                    value={this.state.option1}
                     onChange={this.handleChange}
                     className='selectMenu'
                     options={options}
-                    name="option1"
-
+                    name='option1'
+                    placeholder={this.state.option1.label}
                 />
+                {/* </h2> */}
+                {/* <h3>{this.state.option2}</h3> */}
                 <Select
                     value={option2}
+                    id="2"
                     onChange={this.handleChange}
                     className='selectMenu'
                     options={options}
                 />
+
                 <Select
                     value={option3}
                     onChange={this.handleChange}
