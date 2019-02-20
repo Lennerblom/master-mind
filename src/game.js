@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
-import Select from 'react-select';
 
-const options = [
-    { value: 'red', label: 'red' },
-    { value: 'orange', label: 'orange' },
-    { value: 'yellow', label: 'yellow' },
-    { value: 'green', label: 'green' },
-    { value: 'blue', label: 'blue' },
-    { value: 'black', label: 'black' },
-    { value: 'white', label: 'white' },
-    { value: 'brown', label: 'brown' },
-  ];
+
+// const options = [
+//     { value: 'red', label: 'red' },
+//     { value: 'orange', label: 'orange' },
+//     { value: 'yellow', label: 'yellow' },
+//     { value: 'green', label: 'green' },
+//     { value: 'blue', label: 'blue' },
+//     { value: 'black', label: 'black' },
+//     { value: 'white', label: 'white' },
+//     { value: 'brown', label: 'brown' },
+//   ];
 
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'black', 'white', 'brown'];
 //const randomArr = [];
 const attemptArr = ['_ ', '_ ', '_ ', '_ ', '_'];
 //const clueArr = [];
 // const option1 = {value: '_', label: '_'};
-const option2 = null;
-const option3 = null;
-const option4 = null;
-const option5 = null;
+// const option2 = null;
+// const option3 = null;
+// const option4 = null;
+// const option5 = null;
 
 export default class Game extends Component {
     constructor(props){
@@ -28,11 +28,11 @@ export default class Game extends Component {
         this.state = {
             hiddenView: true,
             solution: [],
-            option1: {value: '_', label: '_'},
-            option2: {value: '_', label: '_'},
-            option3: {value: '_', label: '_'},
-            option4: {value: '_', label: '_'},
-            option5: {value: '_', label: '_'},
+            option1: {value: '_', checked: false},
+            option2: {value: '_', checked: false},
+            option3: {value: '_', checked: false},
+            option4: {value: '_', checked: false},
+            option5: {value: '_', checked: false},
         }
     }
 
@@ -62,35 +62,54 @@ export default class Game extends Component {
       };
       this.setState(changedBit);
       }
-      handleChange = (e) => {
-        console.log('name',e.name);
-          let val = e.value;
-          console.log('value',val);
-          
-          if(val === this.state.option1){
-            this.setState({ option1: val });
-            console.log('option1',this.state.option1)
-            return;
+
+      selectColor = () => {
+          console.log('color selected');
+          this.setState({option1: {value: 'red', checked: false}})
+          console.log(this.state);
+
+      }
+      isChecked = (e) => {
+          console.log('ischecked!', e.target.className);
+          let val = e.target.className;
+          if(val === 'pos1' && this.state.option1.checked === false){
+              this.setState({option1: {checked: true}});
+              console.log("option1", this.state.option1.checked);
           }
-          else if(val.id === 2){
-            this.setState({ option2: val });
-            console.log('option2',this.state.option2)
-            return;
-          }
-          else if(val === option3){
-            this.setState({ option3: val });
-            return;
-          }
-          else if(val === option4){
-            this.setState({ option4: val });
-            return;
-          }
-          else if(val === option5){
-            this.setState({ option5: val });
-            return;
+          else {
+            this.setState({option1: {checked: false}});
           }
 
       }
+    //   handleChange = (e) => {
+    //     console.log('name',e.name);
+    //       let val = e.value;
+    //       console.log('value',val);
+          
+    //       if(val === this.state.option1){
+    //         this.setState({ option1: val });
+    //         console.log('option1',this.state.option1)
+    //         return;
+    //       }
+    //       else if(val.id === 2){
+    //         this.setState({ option2: val });
+    //         console.log('option2',this.state.option2)
+    //         return;
+    //       }
+    //       else if(val === option3){
+    //         this.setState({ option3: val });
+    //         return;
+    //       }
+    //       else if(val === option4){
+    //         this.setState({ option4: val });
+    //         return;
+    //       }
+    //       else if(val === option5){
+    //         this.setState({ option5: val });
+    //         return;
+    //       }
+
+    //   }
     
     render() {
 
@@ -101,42 +120,36 @@ export default class Game extends Component {
                 <h2>{attemptArr} <button onClick={this.submitAttempt}>submit</button></h2>
 
                 {/* <h2 className='selectMenu'>{option1.label} */}
-                <Select
-                    value={this.state.option1}
-                    onChange={this.handleChange}
-                    className='selectMenu'
-                    options={options}
-                    name='option1'
-                    placeholder={this.state.option1.label}
-                />
-                {/* </h2> */}
-                {/* <h3>{this.state.option2}</h3> */}
-                <Select
-                    value={option2}
-                    id="2"
-                    onChange={this.handleChange}
-                    className='selectMenu'
-                    options={options}
-                />
+                <div className="colorChoices">
+                  <button onClick={this.selectColor} id="red"></button>
+                  <button onClick={this.selectColor} id="orange"></button>
+                  <button onClick={this.selectColor} id="yellow"></button>
+                  <button onClick={this.selectColor} id="green"></button>
+                  <button onClick={this.selectColor} id="blue"></button>
+                  <button onClick={this.selectColor} id="black"></button>
+                  <button onClick={this.selectColor} id="white"></button>
+                  <button onClick={this.selectColor} id="brown"></button>
+                </div>
+                <form onChange={this.isChecked}>
+                <div className="colorPositionDiv">
+                <label>
+                  <input type="checkbox" className='pos1'/><div className='colorPosition pos1'></div>
+                </label>
+                <label>
+                  <input type="checkbox"/><div className="colorPosition" id='pos2'></div>
+                </label>
+                <label>
+                  <input type="checkbox"/><div className="colorPosition" id='pos3'></div>
+                </label>
+                <label>
+                  <input type="checkbox"/><div className="colorPosition" id='pos4'></div>
+                </label>
+                <label>
+                  <input type="checkbox"/><div className="colorPosition" id='pos5'></div>
+                </label>
+                </div>
+                </form>
 
-                <Select
-                    value={option3}
-                    onChange={this.handleChange}
-                    className='selectMenu'
-                    options={options}
-                />
-                <Select
-                    value={option4}
-                    onChange={this.handleChange}
-                    className='selectMenu'
-                    options={options}
-                />
-                <Select
-                    value={option5}
-                    onChange={this.handleChange}
-                    className='selectMenu'
-                    options={options}
-                />
             </div>
             
         );
