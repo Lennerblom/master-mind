@@ -21,6 +21,7 @@ let color2 = {background:'white'};
 let color3 = {background:'white'};
 let color4 = {background:'white'};
 let color5 = {background:'white'};
+let winningMsg = 'You won!';
 
 export default class Game extends Component {
     constructor(props){
@@ -154,7 +155,7 @@ checkState = () => {
         return (
             <div>
                 <button onClick={this.generateRandom}>new game</button>
-                {this.state.hiddenView && <h2>{this.state.solution.map(color => <div style={{background: color}} className='colorPosition'>{color}</div>)}</h2>}
+                {this.state.hiddenView && <div>{this.state.solution.map(color => <div style={{background: color}} className='colorPosition'>{color}</div>)}<h2>{winningMsg}</h2></div>}
                 <h2>{attemptArr} <button onClick={this.submitAttempt}>submit</button></h2>
 
                 {/* <h2 className='selectMenu'>{option1.label} */}
