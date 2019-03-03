@@ -154,7 +154,7 @@ checkState = () => {
         return (
             <div>
                 <button onClick={this.generateRandom}>new game</button>
-                {this.state.hiddenView && <h2>{this.state.solution}</h2>}
+                {this.state.hiddenView && <h2>{this.state.solution.map(color => <div style={{background: color}}>{color}</div>)}</h2>}
                 <h2>{attemptArr} <button onClick={this.submitAttempt}>submit</button></h2>
 
                 {/* <h2 className='selectMenu'>{option1.label} */}
