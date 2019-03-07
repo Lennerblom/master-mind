@@ -1,21 +1,9 @@
 import React, { Component } from 'react';
 
-
-// const options = [
-//     { value: 'red', label: 'red' },
-//     { value: 'orange', label: 'orange' },
-//     { value: 'yellow', label: 'yellow' },
-//     { value: 'green', label: 'green' },
-//     { value: 'blue', label: 'blue' },
-//     { value: 'black', label: 'black' },
-//     { value: 'white', label: 'white' },
-//     { value: 'brown', label: 'brown' },
-//   ];
-
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'black', 'ivory', 'brown'];
-//const randomArr = [];
+
 const attemptArr = [];
-//const clueArr = [];
+
 let color1 = {background:'white'};
 let color2 = {background:'white'};
 let color3 = {background:'white'};
@@ -34,23 +22,29 @@ export default class Game extends Component {
             option3: {value: 'white', checked: false},
             option4: {value: 'white', checked: false},
             option5: {value: 'white', checked: false},
-            attemptArr: [],
+            makeItWorkState: false,
+            //attemptArr: [],
         }
     }
-
+makeItWork = () => {
+  console.log('make it work');
+  this.setState({makeItWorkState: true});
+}
     generateRandom = () => {
-        let randomArr = [];
+        let randomArray = [];
         let count = 0;
         while(count < 5) {
             let i = Math.floor(Math.random() * (colors.length));
-            randomArr.push(colors[i]);
+            randomArray.push(colors[i]);
             count++;
         }
-        console.log(randomArr);
-        this.setState({solution: randomArr});
+        console.log(randomArray);
+        this.setState({solution: randomArray});
         }
 
     submitAttempt = () => {
+      let blackCount = 0;
+      let whiteCount = 0;
         console.log('submitted');
         if(this.state.option1.value !== 'white' && this.state.option2.value !== 'white' && this.state.option3.value !== 'white' && this.state.option4.value !== 'white' && this.state.option5.value !== 'white'){
           attemptArr.push(this.state.option1.value);
@@ -59,15 +53,35 @@ export default class Game extends Component {
           attemptArr.push(this.state.option4.value);
           attemptArr.push(this.state.option5.value);
           console.log('attemptArr', attemptArr)
-          for(let i = 0; i < 5; i++){
-            if(this.state.solution[i] === attemptArr[i]){
-              this.setState({hiddenView: true});
-              console.log('you win');
-            }
-            else {
-              console.log('keep trying');
-            }
+          if(this.state.solution[0]===attemptArr[0] && this.state.solution[1]===attemptArr[1] && this.state.solution[2]===attemptArr[2] && this.state.solution[3]===attemptArr[3] && this.state.solution[4]===attemptArr[4]){
+            this.setState({hiddenView: true});
+            console.log('you win');
           }
+          else {
+            for(let i = 0; i < 5; i++){
+              if(this.state.solution[i] === attemptArr[i]){
+                blackCount++;
+              }
+              if(this.state.solution[i] !== attemptArr[i] && this.state.solution.includes(attemptArr[i])){
+              //if(this.state.solution[i] !== attemptArr[i] && attemptArr[i].includes(this.state.solution[i] || this.state.solution[i+1] || this.state.solution[i+2] || this.state.solution[i+3] || this.state.solution[i+4] || this.state.solution[i-1] || this.state.solution[i-2] || this.state.solution[i-3] || this.state.solution[i-4])){
+                whiteCount++
+                console.log('white peg count?');
+              }
+            }
+            console.log('BLACK PEGS =', blackCount, 'WHITE PEGS =', whiteCount);
+            console.log('keep trying', attemptArr);
+            
+          }
+          this.makeItWork();
+          // for(let i = 0; i < 5; i++){
+          //   if(this.state.solution[i] === attemptArr[i]){
+          //     this.setState({hiddenView: true});
+          //     console.log('you win');
+          //   }
+          //   else {
+          //     console.log('keep trying');
+          //   }
+          // }
         }
         
     }
@@ -134,7 +148,9 @@ export default class Game extends Component {
     if(this.state.option5.checked === true){
       this.setState({option5: {value: val, checked: false}});
     }
-      this.setColor();
+    
+    this.setColor();
+      
   }
   setColor = () => {
     color1 = {background: this.state.option1.value};
@@ -142,6 +158,7 @@ export default class Game extends Component {
     color3 = {background: this.state.option3.value};
     color4 = {background: this.state.option4.value};
     color5 = {background: this.state.option5.value};
+    this.makeItWork();
     console.log(this.state);
 }
 
@@ -155,6 +172,7 @@ checkState = () => {
         return (
             <div>
                 <button onClick={this.generateRandom}>new game</button>
+                <button onClick={this.makeItWork}>make it work</button>
                 {this.state.hiddenView && <div>{this.state.solution.map(color => <div style={{background: color}} className='colorPosition'>{color}</div>)}<h2>{winningMsg}</h2></div>}
                 <h2>{attemptArr} <button onClick={this.submitAttempt}>submit</button></h2>
 
@@ -190,6 +208,7 @@ checkState = () => {
             </form>
             <button onClick={this.checkState}>check state</button>
             <button onClick={this.setColor}>set color</button>
+        <div className='attempt-container'>{attemptArr.map(color => <div className='colorPosition' style={{background: color}}></div>)}div</div>
             </div>
             
         );
