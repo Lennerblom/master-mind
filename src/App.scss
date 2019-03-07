@@ -100,3 +100,13 @@ label input{
 label input:checked + div { 
   border-color: rgb(112, 176, 218);
 }
+.attempt-container {
+  display: block;
+}
+.colorPosition1 {
+  display: block;
+  width: 75px;
+  height: 75px;
+  border-radius: 25px;
+  border: solid black;
+}

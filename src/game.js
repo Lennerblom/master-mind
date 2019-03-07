@@ -43,6 +43,8 @@ makeItWork = () => {
         }
 
     submitAttempt = () => {
+      let blackCount = 0;
+      let whiteCount = 0;
         console.log('submitted');
         if(this.state.option1.value !== 'white' && this.state.option2.value !== 'white' && this.state.option3.value !== 'white' && this.state.option4.value !== 'white' && this.state.option5.value !== 'white'){
           attemptArr.push(this.state.option1.value);
@@ -55,7 +57,18 @@ makeItWork = () => {
             this.setState({hiddenView: true});
             console.log('you win');
           }
-          else{
+          else {
+            for(let i = 0; i < 5; i++){
+              if(this.state.solution[i] === attemptArr[i]){
+                blackCount++;
+              }
+              if(this.state.solution[i] !== attemptArr[i] && this.state.solution.includes(attemptArr[i])){
+              //if(this.state.solution[i] !== attemptArr[i] && attemptArr[i].includes(this.state.solution[i] || this.state.solution[i+1] || this.state.solution[i+2] || this.state.solution[i+3] || this.state.solution[i+4] || this.state.solution[i-1] || this.state.solution[i-2] || this.state.solution[i-3] || this.state.solution[i-4])){
+                whiteCount++
+                console.log('white peg count?');
+              }
+            }
+            console.log('BLACK PEGS =', blackCount, 'WHITE PEGS =', whiteCount);
             console.log('keep trying', attemptArr);
             
           }
@@ -195,8 +208,7 @@ checkState = () => {
             </form>
             <button onClick={this.checkState}>check state</button>
             <button onClick={this.setColor}>set color</button>
-        <div>{attemptArr.map(color => <div className='colorPosition' style={{background: color}}></div>)}div</div>
-             <h2>{attemptArr[2]}</h2>
+        <div className='attempt-container'>{attemptArr.map(color => <div className='colorPosition' style={{background: color}}></div>)}div</div>
             </div>
             
         );
