@@ -62,12 +62,14 @@ makeItWork = () => {
               if(this.state.solution[i] === attemptArr[i]){
                 blackCount++;
               }
-              if(this.state.solution[i] !== attemptArr[i] && this.state.solution.includes(attemptArr[i])){
-              //if(this.state.solution[i] !== attemptArr[i] && attemptArr[i].includes(this.state.solution[i] || this.state.solution[i+1] || this.state.solution[i+2] || this.state.solution[i+3] || this.state.solution[i+4] || this.state.solution[i-1] || this.state.solution[i-2] || this.state.solution[i-3] || this.state.solution[i-4])){
-                whiteCount++
+              //if(this.state.solution[i] !== attemptArr[i] && this.state.solution.includes(attemptArr[i])){
+              if(this.state.solution[i] !== attemptArr[i]) {
+                if(attemptArr[i].includes(this.state.solution[i]) || attemptArr[i].includes(this.state.solution[i+1]) || attemptArr[i].includes(this.state.solution[i+2]) || attemptArr[i].includes(this.state.solution[i+3]) || attemptArr[i].includes(this.state.solution[i+4]) || attemptArr[i].includes(this.state.solution[i-1]) || attemptArr[i].includes(this.state.solution[i-2]) || attemptArr[i].includes(this.state.solution[i-3]) || attemptArr[i].includes(this.state.solution[i-4])){
+                whiteCount++;
                 console.log('white peg count?');
               }
             }
+          }
             console.log('BLACK PEGS =', blackCount, 'WHITE PEGS =', whiteCount);
             console.log('keep trying', attemptArr);
             
@@ -135,32 +137,37 @@ makeItWork = () => {
     let val = e.target.id
     if(this.state.option1.checked === true){
       this.setState({option1: {value: val, checked: false}});
+      color1 = {background: val};
     }
     if(this.state.option2.checked === true){
       this.setState({option2: {value: val, checked: false}});
+      color2 = {background: val};
     }
     if(this.state.option3.checked === true){
       this.setState({option3: {value: val, checked: false}});
+      color3 = {background: val};
     }
     if(this.state.option4.checked === true){
       this.setState({option4: {value: val, checked: false}});
+      color4 = {background: val};
     }
     if(this.state.option5.checked === true){
       this.setState({option5: {value: val, checked: false}});
+      color5 = {background: val};
     }
     
-    this.setColor();
+    //this.setColor();
       
   }
-  setColor = () => {
-    color1 = {background: this.state.option1.value};
-    color2 = {background: this.state.option2.value};
-    color3 = {background: this.state.option3.value};
-    color4 = {background: this.state.option4.value};
-    color5 = {background: this.state.option5.value};
-    this.makeItWork();
-    console.log(this.state);
-}
+//   setColor = () => {
+//     color1 = {background: this.state.option1.value};
+//     color2 = {background: this.state.option2.value};
+//     color3 = {background: this.state.option3.value};
+//     color4 = {background: this.state.option4.value};
+//     color5 = {background: this.state.option5.value};
+//     this.makeItWork();
+//     console.log(this.state);
+// }
 
 checkState = () => {
   console.log(this.state);
