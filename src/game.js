@@ -46,7 +46,7 @@ makeItWork = () => {
       let blackCount = 0;
       let whiteCount = 0;
       let tempSolution = [];
-      //let tempAttempt = [];
+      let tempAttempt = [];
         console.log('submitted');
         if(this.state.option1.value !== 'white' && this.state.option2.value !== 'white' && this.state.option3.value !== 'white' && this.state.option4.value !== 'white' && this.state.option5.value !== 'white'){
           attemptArr.push(this.state.option1.value);
@@ -62,13 +62,14 @@ makeItWork = () => {
           else {
             for(let i = 0; i < 5; i++){
               tempSolution.push(this.state.solution[i]);
-              //tempAttempt.push(attemptArr[i]);
+              tempAttempt.push(attemptArr[i]);
             }
             console.log('temp solution!!', tempSolution);
             for(let i = 0; i < 5; i++){
               // this.setState({attemptArr1: [...this.state, i]});
-              if(tempSolution[i] === attemptArr[i]){
+              if(tempSolution[i] === tempAttempt[i]){
                 tempSolution[i] = 'used-blk';
+                tempAttempt[i] = 'checked';
                 blackCount++; 
                 console.log('black tempSolution: ',tempSolution);
               }
@@ -77,10 +78,11 @@ makeItWork = () => {
               //console.log('inside j loop', tempSolution[j]);
               //if(tempSolution[i] !== attemptArr[i] && tempSolution.includes(attemptArr[i])){
                 for(let i = 0; i < 5; i++){
-                if(tempSolution.includes(attemptArr[i])){
+                if(tempSolution.includes(tempAttempt[i])){
                   for(let j = 0; j < 5; j++){
-                    if(tempSolution[j] === attemptArr[i]){
+                    if(tempSolution[j] === tempAttempt[i]){
                       tempSolution[j] = 'found-white';
+                      tempAttempt[i] = 'checked';
                       whiteCount++;
                       console.log('tempSolution white:', tempSolution);
                       break;
