@@ -23,7 +23,7 @@ export default class Game extends Component {
             option4: {value: 'white', checked: false},
             option5: {value: 'white', checked: false},
             makeItWorkState: false,
-            //attemptArr: [],
+            attemptArr1: [],
         }
     }
 makeItWork = () => {
@@ -45,6 +45,8 @@ makeItWork = () => {
     submitAttempt = () => {
       let blackCount = 0;
       let whiteCount = 0;
+      let tempSolution = [];
+      //let tempAttempt = [];
         console.log('submitted');
         if(this.state.option1.value !== 'white' && this.state.option2.value !== 'white' && this.state.option3.value !== 'white' && this.state.option4.value !== 'white' && this.state.option5.value !== 'white'){
           attemptArr.push(this.state.option1.value);
@@ -59,34 +61,43 @@ makeItWork = () => {
           }
           else {
             for(let i = 0; i < 5; i++){
-              if(this.state.solution[i] === attemptArr[i]){
-                blackCount++;
-              }
-              //if(this.state.solution[i] !== attemptArr[i] && this.state.solution.includes(attemptArr[i])){
-              if(this.state.solution[i] !== attemptArr[i]) {
-                if(attemptArr[i].includes(this.state.solution[i]) || attemptArr[i].includes(this.state.solution[i+1]) || attemptArr[i].includes(this.state.solution[i+2]) || attemptArr[i].includes(this.state.solution[i+3]) || attemptArr[i].includes(this.state.solution[i+4]) || attemptArr[i].includes(this.state.solution[i-1]) || attemptArr[i].includes(this.state.solution[i-2]) || attemptArr[i].includes(this.state.solution[i-3]) || attemptArr[i].includes(this.state.solution[i-4])){
-                whiteCount++;
-                console.log('white peg count?');
+              tempSolution.push(this.state.solution[i]);
+              //tempAttempt.push(attemptArr[i]);
+            }
+            console.log('temp solution!!', tempSolution);
+            for(let i = 0; i < 5; i++){
+              // this.setState({attemptArr1: [...this.state, i]});
+              if(tempSolution[i] === attemptArr[i]){
+                tempSolution[i] = 'used-blk';
+                blackCount++; 
+                console.log('black tempSolution: ',tempSolution);
               }
             }
-          }
+              //else {
+              //console.log('inside j loop', tempSolution[j]);
+              //if(tempSolution[i] !== attemptArr[i] && tempSolution.includes(attemptArr[i])){
+                for(let i = 0; i < 5; i++){
+                if(tempSolution.includes(attemptArr[i])){
+                  for(let j = 0; j < 5; j++){
+                    if(tempSolution[j] === attemptArr[i]){
+                      tempSolution[j] = 'found-white';
+                      whiteCount++;
+                      console.log('tempSolution white:', tempSolution);
+                      break;
+                    }
+                  }
+                }
+              
+          
             console.log('BLACK PEGS =', blackCount, 'WHITE PEGS =', whiteCount);
             console.log('keep trying', attemptArr);
-            
+                }
+            }
           }
           this.makeItWork();
-          // for(let i = 0; i < 5; i++){
-          //   if(this.state.solution[i] === attemptArr[i]){
-          //     this.setState({hiddenView: true});
-          //     console.log('you win');
-          //   }
-          //   else {
-          //     console.log('keep trying');
-          //   }
-          // }
         }
-        
-    }
+       
+    
     onChange = (e) => {
         const val =
         e.target.type === "checkbox"
@@ -214,7 +225,7 @@ checkState = () => {
             </div>
             </form>
             <button onClick={this.checkState}>check state</button>
-            <button onClick={this.setColor}>set color</button>
+            {/* <button onClick={this.setColor}>set color</button> */}
         <div className='attempt-container'>{attemptArr.map(color => <div className='colorPosition' style={{background: color}}></div>)}div</div>
             </div>
             
