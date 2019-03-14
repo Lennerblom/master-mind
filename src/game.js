@@ -29,10 +29,6 @@ export default class Game extends Component {
             attemptArr1: [],
         }
     }
-makeItWork = () => {
-  console.log('make it work');
-  this.setState({makeItWorkState: true});
-}
     generateRandom = () => {
         let randomArray = [];
         let count = 0;
@@ -70,18 +66,14 @@ makeItWork = () => {
               tempSolution.push(this.state.solution[i]);
               tempAttempt.push(attemptArr[i]);
             }
-            console.log('temp solution!!', tempSolution);
             for(let i = 0; i < 5; i++){
               if(tempSolution[i] === tempAttempt[i]){
                 tempSolution[i] = 'used-blk';
                 tempAttempt[i] = 'checked';
                 blackCount = 'black'; 
                 countTotal.push(blackCount);
-                
-                console.log('black tempSolution: ',tempSolution);
               }
             }
-            //totalCountArr.push(countTotal);
 
             for(let i = 0; i < 5; i++){
               if(tempSolution.includes(tempAttempt[i])){
@@ -91,19 +83,15 @@ makeItWork = () => {
                     tempAttempt[i] = 'checked';
                     whiteCount = 'ivory';
                     countTotal.push(whiteCount);
-                    console.log('tempSolution white:', tempSolution);
                     break;
                   }
                 }
               }
-              
-              console.log('BLACK PEGS =', blackCount, 'WHITE PEGS =', whiteCount);
-              console.log('keep trying', attemptArr);
             }
             totalCountArr.push(countTotal);
           }
         }
-          this.makeItWork();
+          this.resetColor();
     }
        
     
@@ -117,42 +105,37 @@ makeItWork = () => {
         [e.target.name]: val
       };
       this.setState(changedBit);
-      }
+    }
       isChecked = (e) => {
-        console.log('ischecked!', e.target.className);
         let position = ['pos1', 'pos2', 'pos3', 'pos4', 'pos5'];
         let val = e.target.className;
         for(let pos of position){
-            if(pos === val){
-                val = pos;
+          if(pos === val){
+            val = pos;
             
-        
-        if(val === 'pos1' && this.state.option1.checked === false){
-            this.setState({option1: {checked: true}});
-            console.log("option1", this.state.option1.checked);
+            if(val === 'pos1' && this.state.option1.checked === false){
+              this.setState({option1: {checked: true}});
+              console.log("option1", this.state.option1.checked);
+            }
+            if(val === 'pos2' && this.state.option2.checked === false){
+              this.setState({option2: {checked: true}});
+              console.log("option2", this.state.option2.checked);
+            }
+            if(val === 'pos3' && this.state.option3.checked === false){
+              this.setState({option3: {checked: true}});
+              console.log("option3", this.state.option3.checked);
+            }
+            if(val === 'pos4' && this.state.option4.checked === false){
+              this.setState({option4: {checked: true}});
+              console.log("option4", this.state.option4.checked);
+            }
+            if(val === 'pos5' && this.state.option5.checked === false){
+              this.setState({option5: {checked: true}});
+              console.log("option5", this.state.option5.checked);
+            }
+          }
         }
-        if(val === 'pos2' && this.state.option2.checked === false){
-          this.setState({option2: {checked: true}});
-          console.log("option2", this.state.option2.checked);
       }
-      if(val === 'pos3' && this.state.option3.checked === false){
-          this.setState({option3: {checked: true}});
-          console.log("option3", this.state.option3.checked);
-      }
-      if(val === 'pos4' && this.state.option4.checked === false){
-          this.setState({option4: {checked: true}});
-          console.log("option4", this.state.option4.checked);
-      }
-      if(val === 'pos5' && this.state.option5.checked === false){
-          this.setState({option5: {checked: true}});
-          console.log("option5", this.state.option5.checked);
-      }
-      //   else {
-      //     this.setState({option1: {checked: false}});
-      //   }
-  }
-    }
-  }
   selectColor = (e) => {
     let val = e.target.id
     if(this.state.option1.checked === true){
@@ -174,25 +157,34 @@ makeItWork = () => {
     if(this.state.option5.checked === true){
       this.setState({option5: {value: val, checked: false}});
       color5 = {background: val};
-    }
-      
+    }   
+  }
+
+  resetColor = () => {
+    this.setState({option1: {value: 'white', checked: false}});
+    color1 = {background: 'white'};
+    this.setState({option2: {value: 'white', checked: false}});
+    color2 = {background: 'white'};
+    this.setState({option3: {value: 'white', checked: false}});
+    color3 = {background: 'white'};
+    this.setState({option4: {value: 'white', checked: false}});
+    color4 = {background: 'white'};
+    this.setState({option5: {value: 'white', checked: false}});
+    color5 = {background: 'white'};
   }
 
 checkState = () => {
   console.log(this.state);
 }
-
-    
+ 
     render() {
 
         return (
             <div>
                 <button onClick={this.generateRandom}>new game</button>
-                {/* <button onClick={this.makeItWork}>make it work</button> */}
                 {this.state.hiddenView && <div>{this.state.solution.map(color => <div style={{background: color}} className='colorPosition'>{color}</div>)}<h2>{winningMsg}</h2></div>}
                 <button onClick={this.submitAttempt}>submit</button>
 
-                {/* <h2 className='selectMenu'>{option1.label} */}
                 <div className="colorChoices">
                   <button onClick={this.selectColor} id="red"></button>
                   <button onClick={this.selectColor} id="orange"></button>
@@ -206,23 +198,22 @@ checkState = () => {
                 <form onChange={this.isChecked}>
             <div className="colorPositionDiv">
             <label>
-              <input type="checkbox" className='pos1'/><div className='colorPosition pos1' style={color1}>1</div>
+              <input type="checkbox" className='pos1'/><div className='colorPicker' id='pos1' style={color1}>1</div>
             </label>
             <label>
-              <input type="checkbox" className='pos2'/><div className="colorPosition" id='pos2' style={color2}>2</div>
+              <input type="checkbox" className='pos2'/><div className="colorPicker" id='pos2' style={color2}>2</div>
             </label>
             <label>
-              <input type="checkbox" className='pos3'/><div className="colorPosition" id='pos3' style={color3}>3</div>
+              <input type="checkbox" className='pos3'/><div className="colorPicker" id='pos3' style={color3}>3</div>
             </label>
             <label>
-              <input type="checkbox" className='pos4'/><div className="colorPosition" id='pos4' style={color4}>4</div>
+              <input type="checkbox" className='pos4'/><div className="colorPicker" id='pos4' style={color4}>4</div>
             </label>
             <label>
-              <input type="checkbox" className='pos5'/><div className="colorPosition" id='pos5' style={color5}>5</div>
+              <input type="checkbox" className='pos5'/><div className="colorPicker" id='pos5' style={color5}>5</div>
             </label>
             </div>
             </form>
-            <button onClick={this.checkState}>check state</button>
         <div style={{display: 'inline-block'}}>
           <ul className='attempt-container'>{totalAttempt.map(arrays => 
             <li>{arrays.map(color => <div className='colorPosition' style={{background: color}}></div> )}</li>)}
