@@ -4,8 +4,8 @@ const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'black', 'ivory', 'b
 
 let attemptArr = [];
 const totalAttempt = [];
-let blackCount = 0;
-let whiteCount = 0;
+let totalCountArr = [];
+
 
 let color1 = {background:'white'};
 let color2 = {background:'white'};
@@ -46,8 +46,9 @@ makeItWork = () => {
         }
 
     submitAttempt = () => {
-      //let blackCount = 0;
-     // let whiteCount = 0;
+      let blackCount = '';
+      let countTotal = [];
+      let whiteCount = '';
       let tempSolution = [];
       let tempAttempt = [];
         console.log('submitted');
@@ -74,25 +75,32 @@ makeItWork = () => {
               if(tempSolution[i] === tempAttempt[i]){
                 tempSolution[i] = 'used-blk';
                 tempAttempt[i] = 'checked';
-                blackCount++; 
+                blackCount = 'black'; 
+                countTotal.push(blackCount);
+                
                 console.log('black tempSolution: ',tempSolution);
               }
             }
+            //totalCountArr.push(countTotal);
+
             for(let i = 0; i < 5; i++){
               if(tempSolution.includes(tempAttempt[i])){
                 for(let j = 0; j < 5; j++){
                   if(tempSolution[j] === tempAttempt[i]){
                     tempSolution[j] = 'found-white';
                     tempAttempt[i] = 'checked';
-                    whiteCount++;
+                    whiteCount = 'ivory';
+                    countTotal.push(whiteCount);
                     console.log('tempSolution white:', tempSolution);
                     break;
                   }
                 }
               }
+              
               console.log('BLACK PEGS =', blackCount, 'WHITE PEGS =', whiteCount);
               console.log('keep trying', attemptArr);
             }
+            totalCountArr.push(countTotal);
           }
         }
           this.makeItWork();
@@ -180,9 +188,9 @@ checkState = () => {
         return (
             <div>
                 <button onClick={this.generateRandom}>new game</button>
-                <button onClick={this.makeItWork}>make it work</button>
+                {/* <button onClick={this.makeItWork}>make it work</button> */}
                 {this.state.hiddenView && <div>{this.state.solution.map(color => <div style={{background: color}} className='colorPosition'>{color}</div>)}<h2>{winningMsg}</h2></div>}
-                <h2>{attemptArr} <button onClick={this.submitAttempt}>submit</button></h2>
+                <button onClick={this.submitAttempt}>submit</button>
 
                 {/* <h2 className='selectMenu'>{option1.label} */}
                 <div className="colorChoices">
@@ -215,9 +223,17 @@ checkState = () => {
             </div>
             </form>
             <button onClick={this.checkState}>check state</button>
-        <ul className='attempt-container'>{totalAttempt.map(arrays => <li>{arrays.map(color => <div className='colorPosition' style={{background: color}}></div> )}</li>)}</ul>
-        <h2>black: {blackCount}</h2>
-        <h2>white: {whiteCount}</h2>
+        <div style={{display: 'inline-block'}}>
+          <ul className='attempt-container'>{totalAttempt.map(arrays => 
+            <li>{arrays.map(color => <div className='colorPosition' style={{background: color}}></div> )}</li>)}
+          </ul>
+        </div>
+        <div style={{display: 'inline-block'}}>
+          <ul className='attempt-container'>{totalCountArr.map(count => 
+            <li>{count.map(score => <div className='score' style={{background: score}}></div>)}
+            </li>)}
+          </ul>
+        </div>
             </div>
             
         );
