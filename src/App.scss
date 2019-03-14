@@ -110,3 +110,13 @@ label input:checked + div {
   border-radius: 25px;
   border: solid black;
 }
+.score {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  border-radius: 25px;
+  border: solid black;
+}
+ul {
+  list-style: none;
+}

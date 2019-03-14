@@ -49,14 +49,7 @@ export default class Guess extends Component {
   }
     }
   }
-  setColor = () => {
-    color1 = {background: this.state.option1.value};
-    color2 = {background: this.state.option2.value};
-    color3 = {background: this.state.option3.value};
-    color4 = {background: this.state.option4.value};
-    color5 = {background: this.state.option5.value};
-    console.log(this.state);
-}
+
     render() {
         return (
             <form onChange={this.isChecked}>

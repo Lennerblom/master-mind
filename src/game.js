@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'black', 'ivory', 'brown'];
 
-const attemptArr = [];
+let attemptArr = [];
+const totalAttempt = [];
+let totalCountArr = [];
+
 
 let color1 = {background:'white'};
 let color2 = {background:'white'};
@@ -43,18 +46,21 @@ makeItWork = () => {
         }
 
     submitAttempt = () => {
-      let blackCount = 0;
-      let whiteCount = 0;
+      let blackCount = '';
+      let countTotal = [];
+      let whiteCount = '';
       let tempSolution = [];
       let tempAttempt = [];
         console.log('submitted');
         if(this.state.option1.value !== 'white' && this.state.option2.value !== 'white' && this.state.option3.value !== 'white' && this.state.option4.value !== 'white' && this.state.option5.value !== 'white'){
+          attemptArr = [];
           attemptArr.push(this.state.option1.value);
           attemptArr.push(this.state.option2.value);
           attemptArr.push(this.state.option3.value);
           attemptArr.push(this.state.option4.value);
           attemptArr.push(this.state.option5.value);
           console.log('attemptArr', attemptArr)
+          totalAttempt.push(attemptArr);
           if(this.state.solution[0]===attemptArr[0] && this.state.solution[1]===attemptArr[1] && this.state.solution[2]===attemptArr[2] && this.state.solution[3]===attemptArr[3] && this.state.solution[4]===attemptArr[4]){
             this.setState({hiddenView: true});
             console.log('you win');
@@ -66,38 +72,39 @@ makeItWork = () => {
             }
             console.log('temp solution!!', tempSolution);
             for(let i = 0; i < 5; i++){
-              // this.setState({attemptArr1: [...this.state, i]});
               if(tempSolution[i] === tempAttempt[i]){
                 tempSolution[i] = 'used-blk';
                 tempAttempt[i] = 'checked';
-                blackCount++; 
+                blackCount = 'black'; 
+                countTotal.push(blackCount);
+                
                 console.log('black tempSolution: ',tempSolution);
               }
             }
-              //else {
-              //console.log('inside j loop', tempSolution[j]);
-              //if(tempSolution[i] !== attemptArr[i] && tempSolution.includes(attemptArr[i])){
-                for(let i = 0; i < 5; i++){
-                if(tempSolution.includes(tempAttempt[i])){
-                  for(let j = 0; j < 5; j++){
-                    if(tempSolution[j] === tempAttempt[i]){
-                      tempSolution[j] = 'found-white';
-                      tempAttempt[i] = 'checked';
-                      whiteCount++;
-                      console.log('tempSolution white:', tempSolution);
-                      break;
-                    }
+            //totalCountArr.push(countTotal);
+
+            for(let i = 0; i < 5; i++){
+              if(tempSolution.includes(tempAttempt[i])){
+                for(let j = 0; j < 5; j++){
+                  if(tempSolution[j] === tempAttempt[i]){
+                    tempSolution[j] = 'found-white';
+                    tempAttempt[i] = 'checked';
+                    whiteCount = 'ivory';
+                    countTotal.push(whiteCount);
+                    console.log('tempSolution white:', tempSolution);
+                    break;
                   }
                 }
+              }
               
-          
-            console.log('BLACK PEGS =', blackCount, 'WHITE PEGS =', whiteCount);
-            console.log('keep trying', attemptArr);
-                }
+              console.log('BLACK PEGS =', blackCount, 'WHITE PEGS =', whiteCount);
+              console.log('keep trying', attemptArr);
             }
+            totalCountArr.push(countTotal);
           }
-          this.makeItWork();
         }
+          this.makeItWork();
+    }
        
     
     onChange = (e) => {
@@ -168,19 +175,8 @@ makeItWork = () => {
       this.setState({option5: {value: val, checked: false}});
       color5 = {background: val};
     }
-    
-    //this.setColor();
       
   }
-//   setColor = () => {
-//     color1 = {background: this.state.option1.value};
-//     color2 = {background: this.state.option2.value};
-//     color3 = {background: this.state.option3.value};
-//     color4 = {background: this.state.option4.value};
-//     color5 = {background: this.state.option5.value};
-//     this.makeItWork();
-//     console.log(this.state);
-// }
 
 checkState = () => {
   console.log(this.state);
@@ -192,9 +188,9 @@ checkState = () => {
         return (
             <div>
                 <button onClick={this.generateRandom}>new game</button>
-                <button onClick={this.makeItWork}>make it work</button>
+                {/* <button onClick={this.makeItWork}>make it work</button> */}
                 {this.state.hiddenView && <div>{this.state.solution.map(color => <div style={{background: color}} className='colorPosition'>{color}</div>)}<h2>{winningMsg}</h2></div>}
-                <h2>{attemptArr} <button onClick={this.submitAttempt}>submit</button></h2>
+                <button onClick={this.submitAttempt}>submit</button>
 
                 {/* <h2 className='selectMenu'>{option1.label} */}
                 <div className="colorChoices">
@@ -227,8 +223,17 @@ checkState = () => {
             </div>
             </form>
             <button onClick={this.checkState}>check state</button>
-            {/* <button onClick={this.setColor}>set color</button> */}
-        <div className='attempt-container'>{attemptArr.map(color => <div className='colorPosition' style={{background: color}}></div>)}div</div>
+        <div style={{display: 'inline-block'}}>
+          <ul className='attempt-container'>{totalAttempt.map(arrays => 
+            <li>{arrays.map(color => <div className='colorPosition' style={{background: color}}></div> )}</li>)}
+          </ul>
+        </div>
+        <div style={{display: 'inline-block'}}>
+          <ul className='attempt-container'>{totalCountArr.map(count => 
+            <li>{count.map(score => <div className='score' style={{background: score}}></div>)}
+            </li>)}
+          </ul>
+        </div>
             </div>
             
         );
