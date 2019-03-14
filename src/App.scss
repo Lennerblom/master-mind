@@ -91,7 +91,15 @@ h3{
   display: inline-block;
   width: 75px;
   height: 75px;
-  border-radius: 25px;
+  border-radius: 40px;
+  border: solid black;
+  margin: 7px;
+}
+.colorPicker {
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+  border-radius: 35px;
   border: solid black;
 }
 label input{
@@ -103,19 +111,14 @@ label input:checked + div {
 .attempt-container {
   display: block;
 }
-.colorPosition1 {
-  display: block;
-  width: 75px;
-  height: 75px;
-  border-radius: 25px;
-  border: solid black;
-}
+
 .score {
   display: inline-block;
   width: 35px;
   height: 35px;
   border-radius: 25px;
   border: solid black;
+  margin: 20px 0 20px 0;
 }
 ul {
   list-style: none;
