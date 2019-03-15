@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Divider from '@material-ui/core/Divider';
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'black', 'ivory', 'brown'];
 
 let attemptArr = [];
@@ -56,7 +56,7 @@ export default class Game extends Component {
           attemptArr.push(this.state.option4.value);
           attemptArr.push(this.state.option5.value);
           console.log('attemptArr', attemptArr)
-          totalAttempt.push(attemptArr);
+          totalAttempt.unshift(attemptArr);
           if(this.state.solution[0]===attemptArr[0] && this.state.solution[1]===attemptArr[1] && this.state.solution[2]===attemptArr[2] && this.state.solution[3]===attemptArr[3] && this.state.solution[4]===attemptArr[4]){
             this.setState({hiddenView: true});
             console.log('you win');
@@ -88,7 +88,7 @@ export default class Game extends Component {
                 }
               }
             }
-            totalCountArr.push(countTotal);
+            totalCountArr.unshift(countTotal);
           }
         }
           this.resetColor();
@@ -115,23 +115,18 @@ export default class Game extends Component {
             
             if(val === 'pos1' && this.state.option1.checked === false){
               this.setState({option1: {checked: true}});
-              console.log("option1", this.state.option1.checked);
             }
             if(val === 'pos2' && this.state.option2.checked === false){
               this.setState({option2: {checked: true}});
-              console.log("option2", this.state.option2.checked);
             }
             if(val === 'pos3' && this.state.option3.checked === false){
               this.setState({option3: {checked: true}});
-              console.log("option3", this.state.option3.checked);
             }
             if(val === 'pos4' && this.state.option4.checked === false){
               this.setState({option4: {checked: true}});
-              console.log("option4", this.state.option4.checked);
             }
             if(val === 'pos5' && this.state.option5.checked === false){
               this.setState({option5: {checked: true}});
-              console.log("option5", this.state.option5.checked);
             }
           }
         }
@@ -182,20 +177,24 @@ checkState = () => {
         return (
             <div>
                 <button onClick={this.generateRandom}>new game</button>
-                {this.state.hiddenView && <div>{this.state.solution.map(color => <div style={{background: color}} className='colorPosition'>{color}</div>)}<h2>{winningMsg}</h2></div>}
+                {this.state.hiddenView && <div>{this.state.solution.map(color => <div style={{background: color}} className='colorPosition'></div>)}<h2>{winningMsg}</h2></div>}
                 <button onClick={this.submitAttempt}>submit</button>
 
-                <div className="colorChoices">
-                  <button onClick={this.selectColor} id="red"></button>
-                  <button onClick={this.selectColor} id="orange"></button>
-                  <button onClick={this.selectColor} id="yellow"></button>
-                  <button onClick={this.selectColor} id="green"></button>
-                  <button onClick={this.selectColor} id="blue"></button>
-                  <button onClick={this.selectColor} id="black"></button>
-                  <button onClick={this.selectColor} id="ivory"></button>
-                  <button onClick={this.selectColor} id="brown"></button>
-                </div>
-                <form onChange={this.isChecked}>
+
+                
+        <div style={{display: 'inline-block'}}>
+          <ol reversed={true} className='attempt-container'>{totalAttempt.map(arrays => 
+            <li>{arrays.map(color => <div className='colorPosition' style={{background: color}}></div> )}</li>)}
+          </ol>
+        </div>
+        <div style={{display: 'inline-block'}}>
+          <ul className='attempt-container'>{totalCountArr.map(count => 
+            <li>{count.map(score => <div className='score' style={{background: score}}></div>)}
+            </li>)}
+          </ul>
+        </div>
+        <Divider/>
+        <form onChange={this.isChecked}>
             <div className="colorPositionDiv">
             <label>
               <input type="checkbox" className='pos1'/><div className='colorPicker' id='pos1' style={color1}>1</div>
@@ -214,17 +213,16 @@ checkState = () => {
             </label>
             </div>
             </form>
-        <div style={{display: 'inline-block'}}>
-          <ul className='attempt-container'>{totalAttempt.map(arrays => 
-            <li>{arrays.map(color => <div className='colorPosition' style={{background: color}}></div> )}</li>)}
-          </ul>
-        </div>
-        <div style={{display: 'inline-block'}}>
-          <ul className='attempt-container'>{totalCountArr.map(count => 
-            <li>{count.map(score => <div className='score' style={{background: score}}></div>)}
-            </li>)}
-          </ul>
-        </div>
+        <div className="colorChoices">
+                  <button onClick={this.selectColor} id="red"></button>
+                  <button onClick={this.selectColor} id="orange"></button>
+                  <button onClick={this.selectColor} id="yellow"></button>
+                  <button onClick={this.selectColor} id="green"></button>
+                  <button onClick={this.selectColor} id="blue"></button>
+                  <button onClick={this.selectColor} id="black"></button>
+                  <button onClick={this.selectColor} id="ivory"></button>
+                  <button onClick={this.selectColor} id="brown"></button>
+                </div>
             </div>
             
         );
