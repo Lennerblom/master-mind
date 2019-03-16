@@ -42,13 +42,10 @@ export default class Game extends Component {
         }
 
     submitAttempt = () => {
-      let blackCount = '';
-      let countTotal = [];
-      let whiteCount = '';
       let tempSolution = [];
       let tempAttempt = [];
-        console.log('submitted');
-        if(this.state.option1.value !== 'white' && this.state.option2.value !== 'white' && this.state.option3.value !== 'white' && this.state.option4.value !== 'white' && this.state.option5.value !== 'white'){
+
+        if(this.state.option1.value !== 'white' && this.state.option2.value !== 'white' && this.state.option3.value !== 'white' && this.state.option4.value !== 'white'   && this.state.option5.value !== 'white'){
           attemptArr = [];
           attemptArr.push(this.state.option1.value);
           attemptArr.push(this.state.option2.value);
@@ -62,6 +59,11 @@ export default class Game extends Component {
             console.log('you win');
           }
           else {
+            let countTotal = [];
+            let blackCount = '';
+            let whiteCount = '';
+            let noScore = 'orangered';
+
             for(let i = 0; i < 5; i++){
               tempSolution.push(this.state.solution[i]);
               tempAttempt.push(attemptArr[i]);
@@ -87,6 +89,10 @@ export default class Game extends Component {
                   }
                 }
               }
+            }
+
+            if(countTotal.length === 0){
+              countTotal.push(noScore);
             }
             totalCountArr.unshift(countTotal);
           }
@@ -175,26 +181,30 @@ checkState = () => {
     render() {
 
         return (
-            <div>
-                <button onClick={this.generateRandom}>new game</button>
+          <div className='main-container'>
+                <button className='new-game-button' onClick={this.generateRandom}>new game</button>
+                <button className='submit-button' onClick={this.submitAttempt}>submit</button>
+          <div className='game-board-container'>
+
                 {this.state.hiddenView && <div>{this.state.solution.map(color => <div style={{background: color}} className='colorPosition'></div>)}<h2>{winningMsg}</h2></div>}
-                <button onClick={this.submitAttempt}>submit</button>
+                
 
 
                 
-        <div style={{display: 'inline-block'}}>
-          <ol reversed={true} className='attempt-container'>{totalAttempt.map(arrays => 
+        <div className='attempt-container'>
+          <ol reversed={true} className='attempt-row'>{totalAttempt.map(arrays => 
             <li>{arrays.map(color => <div className='colorPosition' style={{background: color}}></div> )}</li>)}
           </ol>
         </div>
-        <div style={{display: 'inline-block'}}>
-          <ul className='attempt-container'>{totalCountArr.map(count => 
+        <div className='attempt-container'>
+          <ul className='attempt-row'>{totalCountArr.map(count => 
             <li>{count.map(score => <div className='score' style={{background: score}}></div>)}
             </li>)}
           </ul>
         </div>
-        <Divider/>
-        <form onChange={this.isChecked}>
+      <Divider/>
+        <div className='guess-container'>
+          <form onChange={this.isChecked}>
             <div className="colorPositionDiv">
             <label>
               <input type="checkbox" className='pos1'/><div className='colorPicker' id='pos1' style={color1}>1</div>
@@ -212,19 +222,23 @@ checkState = () => {
               <input type="checkbox" className='pos5'/><div className="colorPicker" id='pos5' style={color5}>5</div>
             </label>
             </div>
-            </form>
-        <div className="colorChoices">
-                  <button onClick={this.selectColor} id="red"></button>
-                  <button onClick={this.selectColor} id="orange"></button>
-                  <button onClick={this.selectColor} id="yellow"></button>
-                  <button onClick={this.selectColor} id="green"></button>
-                  <button onClick={this.selectColor} id="blue"></button>
-                  <button onClick={this.selectColor} id="black"></button>
-                  <button onClick={this.selectColor} id="ivory"></button>
-                  <button onClick={this.selectColor} id="brown"></button>
-                </div>
-            </div>
+          </form>
+          <div>
+            <button className="colorChoices" onClick={this.selectColor} id="red"></button>
+            <button className="colorChoices" onClick={this.selectColor} id="orange"></button>
+            <button className="colorChoices" onClick={this.selectColor} id="yellow"></button>
+            <button className="colorChoices" onClick={this.selectColor} id="green"></button>
+          </div>
+          <div>
+            <button className="colorChoices" onClick={this.selectColor} id="blue"></button>
+            <button className="colorChoices" onClick={this.selectColor} id="black"></button>
+            <button className="colorChoices" onClick={this.selectColor} id="ivory"></button>
+            <button className="colorChoices" onClick={this.selectColor} id="brown"></button>
+          </div>
+        </div>
+      </div>
+      </div>
             
-        );
+      );
     }
 }
