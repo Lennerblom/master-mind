@@ -103,7 +103,7 @@ button {
   width: 45px;
   height: 45px;
   border-radius: 40px;
-  border: solid black;
+  // border: solid black;
   margin: 7px;
 }
 .colorPicker {
@@ -144,7 +144,24 @@ ul {
 }
 @media only screen and (max-width: 400px) {
   .colorPicker {
+    width: 35px;
+    height: 35px;
+    margin: 1px auto;
+  }
+  .score {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    border: solid black;
+    margin: 6px 0 6px 0;
+  }
+  .colorPosition {
+    display: inline-block;
     width: 25px;
     height: 25px;
+    border-radius: 25px;
+    border: solid black;
+    margin: 1px;
   }
 }
