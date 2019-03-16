@@ -40,56 +40,63 @@ h3{
   width: 100px;
 }
 button {
-  margin: 10px 2px 10px 0;
+  margin: 10px 2px 2px 0;
+}
+.new-game-button {
+  position: absolute;
+  top: 1%;
+  left: 5%;
+}
+.submit-button {
+  position: fixed;
+  top: 1%;
+  right: 5%;
+}
+
+.game-board-container {
+  background-image: url('assets/wood-background.jpg');
+  max-width: 95%; 
+  margin: auto;
+}
+.guess-container {
+  margin: 1%
+}
+.colorChoices {
+  width: 75px;
+  height: 75px;
+  border-radius: 40px;
 }
 #red {
-  background-color: red;
-  width: 75px;
-  height: 75px;
-  border-radius: 40px;
+  background-image: radial-gradient( rgb(245, 155, 143) 1%, rgb(255, 0, 0) 99%);
+  border: 1px solid firebrick;
 }
 #orange {
-  background-color: orange;
-  width: 75px;
-  height: 75px;
-  border-radius: 40px;
+  background-image: radial-gradient( rgb(247, 195, 119) 1%,orange 99%);
+  border: 1px solid darkorange;
 }
 #yellow {
-  background-color: yellow;
-  width: 75px;
-  height: 75px;
-  border-radius: 40px;
+  background-image: radial-gradient(lightyellow 1%, yellow 99%);
+  border: 1px solid black;
 }
 #green {
-  background-color: green;
-  width: 75px;
-  height: 75px;
-  border-radius: 40px;
+  background-image: radial-gradient(lightgreen 1%, green 99%);
+  border: 1px solid darkgreen;
 }
 #blue {
-  background-color: blue;
-  width: 75px;
-  height: 75px;
-  border-radius: 40px;
-  
+  background-image: radial-gradient( lightblue 1%,blue 99%);
+  border: 1px solid darkblue;
 }
 #black {
-  background-color: black;
-  width: 75px;
-  height: 75px;
-  border-radius: 40px;
+  background-image: radial-gradient(rgb(37, 36, 36) 5%,black 90%);
+  border: 1px solid black;
 }
 #ivory {
-  background-color: ivory;
-  width: 75px;
-  height: 75px;
-  border-radius: 40px;
+  background-image: radial-gradient(white 5%,ivory 95%);
+  border: 1px solid rgb(214, 214, 201);
 }
 #brown {
-  background-color: brown;
-  width: 75px;
-  height: 75px;
-  border-radius: 40px;
+  background-image: radial-gradient(rgb(189, 121, 82) 1%, rgb(165, 81, 42) 99%);
+  border: 1px solid brown;
 }
 .colorPosition {
   display: inline-block;
@@ -110,9 +117,13 @@ label input{
   visibility: hidden; 
 }
 label input:checked + div { 
-  border-color: rgb(247, 242, 204);
+  border-color: rgb(243, 212, 36);
 }
 .attempt-container {
+  display: inline-block;
+  max-width: 90%;
+}
+.attempt-row {
   display: block;
 }
 
@@ -126,4 +137,14 @@ label input:checked + div {
 }
 ul {
   list-style: none;
+}
+.main-container {
+  max-width: 95%;
+  margin: auto;
+}
+@media only screen and (max-width: 400px) {
+  .colorPicker {
+    width: 25px;
+    height: 25px;
+  }
 }
