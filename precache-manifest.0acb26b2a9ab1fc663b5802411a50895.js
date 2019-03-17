@@ -8,7 +8,7 @@ self.__precacheManifest = [
     "url": "/master-mind/static/js/runtime~main.7d8a37f8.js"
   },
   {
-    "revision": "04c455c24f29d39d362e",
+    "revision": "86027bb214b0e2ccb684",
     "url": "/master-mind/static/js/main.c4a4fdb3.chunk.js"
   },
   {
@@ -16,11 +16,11 @@ self.__precacheManifest = [
     "url": "/master-mind/static/js/2.8b717640.chunk.js"
   },
   {
-    "revision": "04c455c24f29d39d362e",
-    "url": "/master-mind/static/css/main.bc3222cb.chunk.css"
+    "revision": "86027bb214b0e2ccb684",
+    "url": "/master-mind/static/css/main.6066fb92.chunk.css"
   },
   {
-    "revision": "7aba23e83dc5ef277fbff5fd1482171d",
+    "revision": "eafd56fd759f90681bd5d086b86ae067",
     "url": "/master-mind/index.html"
   }
 ];
