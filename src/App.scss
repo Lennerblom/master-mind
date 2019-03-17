@@ -54,7 +54,7 @@ button {
 }
 
 .game-board-container {
-  background-image: url('assets/wood-background.jpg');
+  background-image: url('assets/lighter-wood.jpg');
   max-width: 95%; 
   margin: auto;
 }
@@ -76,7 +76,7 @@ button {
 }
 #yellow {
   background-image: radial-gradient(lightyellow 1%, yellow 99%);
-  border: 1px solid black;
+  border: 1px solid rgb(247, 226, 40);
 }
 #green {
   background-image: radial-gradient(lightgreen 1%, green 99%);
@@ -84,7 +84,7 @@ button {
 }
 #blue {
   background-image: radial-gradient( lightblue 1%,blue 99%);
-  border: 1px solid darkblue;
+  border: 1px solid rgb(7, 7, 221);
 }
 #black {
   background-image: radial-gradient(rgb(37, 36, 36) 5%,black 90%);
@@ -94,9 +94,9 @@ button {
   background-image: radial-gradient(white 5%,ivory 95%);
   border: 1px solid rgb(214, 214, 201);
 }
-#brown {
-  background-image: radial-gradient(rgb(189, 121, 82) 1%, rgb(165, 81, 42) 99%);
-  border: 1px solid brown;
+#sienna {
+  background-image: radial-gradient(rgb(189, 121, 82) 1%, sienna 99%);
+  border: 1px solid rgb(129, 55, 20);
 }
 .colorPosition {
   display: inline-block;
@@ -114,7 +114,8 @@ button {
   border: solid black;
 }
 label input{
-  visibility: hidden; 
+  visibility: hidden;
+  width: 0; 
 }
 label input:checked + div { 
   border-color: rgb(243, 212, 36);
@@ -133,19 +134,23 @@ label input:checked + div {
   height: 35px;
   border-radius: 25px;
   border: solid black;
-  margin: 12px 0 12px 0;
+  margin: 9px 0 9px 0;
 }
 ul {
   list-style: none;
+  padding: 10px;
+}
+ol {
+  padding: 10px;
 }
 .main-container {
   max-width: 95%;
   margin: auto;
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 415px) {
   .colorPicker {
-    width: 35px;
-    height: 35px;
+    width: 12vw;
+    height: 12vw;
     margin: 1px auto;
   }
   .score {
@@ -163,5 +168,8 @@ ul {
     border-radius: 25px;
     border: solid black;
     margin: 1px;
+  }
+  .test{
+    color: sienna
   }
 }
