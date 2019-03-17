@@ -43,13 +43,19 @@ h2 {
   font-family: 'Fredericka the Great', cursive;
   color: goldenrod;
   font-size: 3em;
+  margin-top: 10px;
 }
 button {
   margin: 10px 2px 2px 0;
+  &:focus {outline:0;}
 }
+.hidden-solution {
+margin-top: 75px; 
+}
+
 .new-game-button {
   position: absolute;
-  top: 12%;
+  top: 10%;
   left: 5%;
   width: 7em;
   height: 2.3em;
@@ -67,8 +73,8 @@ button {
 
 
 .submit-button {
-  position: fixed;
-  top: 12%;
+  position: absolute;
+  top: 10%;
   right: 5%;
   width: 5em;
   height: 2em;
