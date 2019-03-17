@@ -1,14 +1,14 @@
 {
-  "main.css": "/master-mind/static/css/main.20fbbf72.chunk.css",
-  "main.js": "/master-mind/static/js/main.1bdb7ce9.chunk.js",
-  "main.js.map": "/master-mind/static/js/main.1bdb7ce9.chunk.js.map",
+  "main.css": "/master-mind/static/css/main.bc3222cb.chunk.css",
+  "main.js": "/master-mind/static/js/main.c4a4fdb3.chunk.js",
+  "main.js.map": "/master-mind/static/js/main.c4a4fdb3.chunk.js.map",
   "runtime~main.js": "/master-mind/static/js/runtime~main.7d8a37f8.js",
   "runtime~main.js.map": "/master-mind/static/js/runtime~main.7d8a37f8.js.map",
   "static/js/2.8b717640.chunk.js": "/master-mind/static/js/2.8b717640.chunk.js",
   "static/js/2.8b717640.chunk.js.map": "/master-mind/static/js/2.8b717640.chunk.js.map",
   "index.html": "/master-mind/index.html",
-  "precache-manifest.c7a96982916ae0b1efae433e8aaf735c.js": "/master-mind/precache-manifest.c7a96982916ae0b1efae433e8aaf735c.js",
+  "precache-manifest.b1f255258a0b1b64f3afc46c75bc4e1d.js": "/master-mind/precache-manifest.b1f255258a0b1b64f3afc46c75bc4e1d.js",
   "service-worker.js": "/master-mind/service-worker.js",
-  "static/css/main.20fbbf72.chunk.css.map": "/master-mind/static/css/main.20fbbf72.chunk.css.map",
+  "static/css/main.bc3222cb.chunk.css.map": "/master-mind/static/css/main.bc3222cb.chunk.css.map",
   "static/media/App.scss": "/master-mind/static/media/wood-wallpapers.a1fd0394.jpg"
 }
