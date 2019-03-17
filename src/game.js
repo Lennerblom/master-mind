@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import Divider from '@material-ui/core/Divider';
+//import Button from '@material-ui/core/Button';
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'black', 'ivory', 'sienna'];
 
 let attemptArr = [];
@@ -7,11 +7,11 @@ const totalAttempt = [];
 let totalCountArr = [];
 
 
-let color1 = {background:'white'};
-let color2 = {background:'white'};
-let color3 = {background:'white'};
-let color4 = {background:'white'};
-let color5 = {background:'white'};
+let color1 = {background:'transparent'};
+let color2 = {background:'transparent'};
+let color3 = {background:'transparent'};
+let color4 = {background:'transparent'};
+let color5 = {background:'transparent'};
 let winningMsg = 'You won!';
 
 export default class Game extends Component {
@@ -20,11 +20,11 @@ export default class Game extends Component {
     this.state = {
       hiddenView: false,
       solution: [],
-      option1: {value: 'white', checked: false},
-      option2: {value: 'white', checked: false},
-      option3: {value: 'white', checked: false},
-      option4: {value: 'white', checked: false},
-      option5: {value: 'white', checked: false},
+      option1: {value: 'transparent', checked: false},
+      option2: {value: 'transparent', checked: false},
+      option3: {value: 'transparent', checked: false},
+      option4: {value: 'transparent', checked: false},
+      option5: {value: 'transparent', checked: false},
       makeItWorkState: false,
       attemptArr1: [],
     }
@@ -45,7 +45,7 @@ export default class Game extends Component {
       let tempSolution = [];
       let tempAttempt = [];
 
-        if(this.state.option1.value !== 'white' && this.state.option2.value !== 'white' && this.state.option3.value !== 'white' && this.state.option4.value !== 'white'   && this.state.option5.value !== 'white'){
+        if(this.state.option1.value !== 'transparent' && this.state.option2.value !== 'transparent' && this.state.option3.value !== 'transparent' && this.state.option4.value !== 'transparent'   && this.state.option5.value !== 'transparent'){
           attemptArr = [];
           attemptArr.push(this.state.option1.value);
           attemptArr.push(this.state.option2.value);
@@ -162,25 +162,27 @@ export default class Game extends Component {
     }
 
     resetColor = () => {
-      this.setState({option1: {value: 'white', checked: false}});
-      color1 = {background: 'white'};
-      this.setState({option2: {value: 'white', checked: false}});
-      color2 = {background: 'white'};
-      this.setState({option3: {value: 'white', checked: false}});
-      color3 = {background: 'white'};
-      this.setState({option4: {value: 'white', checked: false}});
-      color4 = {background: 'white'};
-      this.setState({option5: {value: 'white', checked: false}});
-      color5 = {background: 'white'};
+      this.setState({option1: {value: 'transparent', checked: false}});
+      color1 = {background: 'transparent'};
+      this.setState({option2: {value: 'transparent', checked: false}});
+      color2 = {background: 'transparent'};
+      this.setState({option3: {value: 'transparent', checked: false}});
+      color3 = {background: 'transparent'};
+      this.setState({option4: {value: 'transparent', checked: false}});
+      color4 = {background: 'transparent'};
+      this.setState({option5: {value: 'transparent', checked: false}});
+      color5 = {background: 'transparent'};
     }
 
     render() {
 
       return (
         <div className='main-container'>
-                <button className='new-game-button' onClick={this.generateRandom}>new game</button>
-                <button className='submit-button' onClick={this.submitAttempt}>submit</button>
-        <div className='game-board-container'>
+          <h2>Master Mind</h2>          
+          <button className='new-game-button' onClick={this.generateRandom}>new game</button>
+          <button className='submit-button' onClick={this.submitAttempt}>submit</button>
+
+          <div className='game-board-container'>
 
                 {this.state.hiddenView && <div>{this.state.solution.map(color => <div style={{background: color}} className='colorPosition'></div>)}<h2>{winningMsg}</h2></div>}
                 
@@ -194,7 +196,8 @@ export default class Game extends Component {
           </div>
           <div className='attempt-container'>
             <ul className='attempt-row'>{totalCountArr.map(count => 
-              <li>{count.map(score => <div className='score' style={{background: score}}></div>)}
+              <li>{count.map(score => 
+                <div className='score' style={{background: score}}></div>)}
               </li>)}
             </ul>
           </div>

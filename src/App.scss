@@ -39,22 +39,58 @@ h3{
   display: inline-block;
   width: 100px;
 }
+h2 {
+  font-family: 'Fredericka the Great', cursive;
+  color: goldenrod;
+  font-size: 3em;
+}
 button {
   margin: 10px 2px 2px 0;
 }
 .new-game-button {
   position: absolute;
-  top: 1%;
+  top: 12%;
   left: 5%;
-}
-.submit-button {
-  position: fixed;
-  top: 1%;
-  right: 5%;
+  width: 7em;
+  height: 2.3em;
+  font-size: 16px;
+  border-radius: 7em;
+  background: transparent;
+  border: ridge goldenrod;
+  color: goldenrod;
+    &:hover {
+    background: goldenrod;
+    color: black;
+    border: ridge rgb(70, 32, 0);
+    }
 }
 
+
+.submit-button {
+  position: fixed;
+  top: 12%;
+  right: 5%;
+  width: 5em;
+  height: 2em;
+  border-radius: 7em;
+  background: transparent;
+  font-size: 18px;
+  border: ridge goldenrod;
+  color: goldenrod;
+    &:hover {
+    background: goldenrod;
+    color: black;
+    border: ridge rgb(70, 32, 0);
+    }
+}
+// assets/wood-background.jpg
+// assets/wood-wallpapers.jpg
+// assets/lighter-wood.jpg
+html {
+  background-image: url('assets/wood-wallpapers.jpg');
+}
 .game-board-container {
-  background-image: url('assets/lighter-wood.jpg');
+
   max-width: 95%; 
   margin: auto;
 }
@@ -103,8 +139,9 @@ button {
   width: 45px;
   height: 45px;
   border-radius: 40px;
-  // border: solid black;
-  margin: 7px;
+  border: 2px ridge rgba(107, 54, 5, 0.842);
+  margin: 14px 7px 0 7px;
+
 }
 .colorPicker {
   display: inline-block;
@@ -133,8 +170,8 @@ label input:checked + div {
   width: 35px;
   height: 35px;
   border-radius: 25px;
-  border: solid black;
-  margin: 9px 0 9px 0;
+  border: 2px ridge rgba(107, 54, 5, 0.842);
+  margin: 18px 0 0px 0;
 }
 ul {
   list-style: none;
@@ -142,6 +179,9 @@ ul {
 }
 ol {
   padding: 10px;
+  color: goldenrod;
+  list-style-type: upper-roman;
+  font-family: 'Times New Roman', Times, serif
 }
 .main-container {
   max-width: 95%;
