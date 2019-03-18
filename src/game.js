@@ -212,19 +212,19 @@ export default class Game extends Component {
             {this.state.gameOn && <form onChange={this.isChecked}>
               <div>
                 <label>
-                  <input type="checkbox" className='pos1'/><div className='colorPicker' id='pos1' style={color1}>1</div>
+                  <input type="checkbox" className='pos1'/><div className='colorPicker' id='pos1' style={color1}></div>
                 </label>
                 <label>
-                  <input type="checkbox" className='pos2'/><div className="colorPicker" id='pos2' style={color2}>2</div>
+                  <input type="checkbox" className='pos2'/><div className="colorPicker" id='pos2' style={color2}></div>
                 </label>
                 <label>
-                  <input type="checkbox" className='pos3'/><div className="colorPicker" id='pos3' style={color3}>3</div>
+                  <input type="checkbox" className='pos3'/><div className="colorPicker" id='pos3' style={color3}></div>
                 </label>
                 <label>
-                  <input type="checkbox" className='pos4'/><div className="colorPicker" id='pos4' style={color4}>4</div>
+                  <input type="checkbox" className='pos4'/><div className="colorPicker" id='pos4' style={color4}></div>
                 </label>
                 <label>
-                  <input type="checkbox" className='pos5'/><div className="colorPicker" id='pos5' style={color5}>5</div>
+                  <input type="checkbox" className='pos5'/><div className="colorPicker" id='pos5' style={color5}></div>
                 </label>
               </div>
             </form>}
