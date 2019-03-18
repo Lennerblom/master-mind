@@ -17,7 +17,7 @@ let winningMsg = 'You won!';
 export default class Game extends Component {
   constructor(props){
     super(props);
-    this.defaultsState = {
+    this.state = {
       hiddenView: false,
       solution: [],
       option1: {value: 'transparent', checked: false},
@@ -27,13 +27,11 @@ export default class Game extends Component {
       option5: {value: 'transparent', checked: false},
       gameOn: false,
     };
-    const initialState = this.defaultsState;
-    this.state = {...initialState};
   }
 
   gameStart = () => {
     if(totalAttempt.length > 0){
-      this.setState({initialState: this.defaultsState});
+      this.setState({hiddenView: false});
       totalAttempt = [];
       totalCountArr = [];
     }
