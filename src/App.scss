@@ -68,6 +68,7 @@ margin-top: 75px;
     background: goldenrod;
     color: black;
     border: ridge rgb(70, 32, 0);
+    cursor: pointer;
     }
 }
 
@@ -87,6 +88,7 @@ margin-top: 75px;
     background: goldenrod;
     color: black;
     border: ridge rgb(70, 32, 0);
+    cursor: pointer;
     }
 }
 // assets/wood-background.jpg
@@ -107,6 +109,7 @@ html {
   width: 75px;
   height: 75px;
   border-radius: 40px;
+  cursor: pointer;
 }
 #red {
   background-image: radial-gradient( rgb(245, 155, 143) 1%, rgb(255, 0, 0) 99%);
@@ -125,7 +128,7 @@ html {
   border: 1px solid darkgreen;
 }
 #blue {
-  background-image: radial-gradient( lightblue 1%,blue 99%);
+  background-image: radial-gradient( rgb(37, 132, 221) 1%,blue 99%);
   border: 1px solid rgb(7, 7, 221);
 }
 #black {
@@ -137,7 +140,7 @@ html {
   border: 1px solid rgb(214, 214, 201);
 }
 #sienna {
-  background-image: radial-gradient(rgb(189, 121, 82) 1%, sienna 99%);
+  background-image: radial-gradient(rgb(201, 139, 104) 1%, sienna 99%);
   border: 1px solid rgb(129, 55, 20);
 }
 .colorPosition {
@@ -155,6 +158,7 @@ html {
   height: 75px;
   border-radius: 35px;
   border: solid black;
+  cursor: pointer;
 }
 label input{
   visibility: hidden;
@@ -177,7 +181,7 @@ label input:checked + div {
   height: 35px;
   border-radius: 25px;
   border: 2px ridge rgba(107, 54, 5, 0.842);
-  margin: 18px 0 0px 0;
+  margin: 22px 0 3px 0;
 }
 ul {
   list-style: none;
