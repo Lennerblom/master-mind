@@ -184,10 +184,7 @@ export default class Game extends Component {
 
           <div className='game-board-container'>
 
-                {this.state.hiddenView && <div>{this.state.solution.map(color => <div style={{background: color}} className='colorPosition'></div>)}<h2>{winningMsg}</h2></div>}
-                
-
-
+                {this.state.hiddenView && <div className='hidden-solution'>{this.state.solution.map(color => <div style={{background: color}} className='colorPosition'></div>)}<h2>{winningMsg}</h2></div>}
                 
           <div className='attempt-container'>
             <ol reversed={true} className='attempt-row'>{totalAttempt.map(arrays => 
