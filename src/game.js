@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'black', 'ivory', 'sienna'];
 
 let attemptArr = [];
-const totalAttempt = [];
+let totalAttempt = [];
 let totalCountArr = [];
 
 
@@ -17,7 +17,7 @@ let winningMsg = 'You won!';
 export default class Game extends Component {
   constructor(props){
     super(props);
-    this.state = {
+    this.defaultsState = {
       hiddenView: false,
       solution: [],
       option1: {value: 'transparent', checked: false},
@@ -25,9 +25,20 @@ export default class Game extends Component {
       option3: {value: 'transparent', checked: false},
       option4: {value: 'transparent', checked: false},
       option5: {value: 'transparent', checked: false},
-      makeItWorkState: false,
-      attemptArr1: [],
+      gameOn: false,
+    };
+    const initialState = this.defaultsState;
+    this.state = {...initialState};
+  }
+
+  gameStart = () => {
+    if(totalAttempt.length > 0){
+      this.setState({initialState: this.defaultsState});
+      totalAttempt = [];
+      totalCountArr = [];
     }
+    this.setState({gameOn: true});
+    this.generateRandom();
   }
     generateRandom = () => {
         let randomArray = [];
@@ -179,7 +190,7 @@ export default class Game extends Component {
       return (
         <div className='main-container'>
           <h2>Master Mind</h2>          
-          <button className='new-game-button' onClick={this.generateRandom}>new game</button>
+          <button className='new-game-button' onClick={this.gameStart}>new game</button>
           <button className='submit-button' onClick={this.submitAttempt}>submit</button>
 
           <div className='game-board-container'>
@@ -200,7 +211,7 @@ export default class Game extends Component {
           </div>
           {/* <Divider/> */}
           <div className='guess-container'>
-            <form onChange={this.isChecked}>
+            {this.state.gameOn && <form onChange={this.isChecked}>
               <div>
                 <label>
                   <input type="checkbox" className='pos1'/><div className='colorPicker' id='pos1' style={color1}>1</div>
@@ -218,7 +229,7 @@ export default class Game extends Component {
                   <input type="checkbox" className='pos5'/><div className="colorPicker" id='pos5' style={color5}>5</div>
                 </label>
               </div>
-            </form>
+            </form>}
             <div>
               <button className="colorChoices" onClick={this.selectColor} id="red"></button>
               <button className="colorChoices" onClick={this.selectColor} id="orange"></button>
