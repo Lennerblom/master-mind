@@ -207,7 +207,7 @@ export default class Game extends Component {
               </li>)}
             </ul>
           </div>
-          {/* <Divider/> */}
+
           <div className='guess-container'>
             {this.state.gameOn && <form onChange={this.isChecked}>
               <div>
