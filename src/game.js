@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import Button from '@material-ui/core/Button';
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'black', 'ivory', 'sienna'];
 
 let attemptArr = [];
@@ -187,7 +186,7 @@ export default class Game extends Component {
 
       return (
         <div className='main-container'>
-          <h2>Master Mind</h2>          
+          <h2>Master Mind</h2>    
           <button className='new-game-button' onClick={this.gameStart}>new game</button>
           <button className='submit-button' onClick={this.submitAttempt}>submit</button>
 

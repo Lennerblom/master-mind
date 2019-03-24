@@ -10,13 +10,13 @@ class Dashboard extends Component {
     constructor(props){
         super(props);
         this.state = {
-            loginView: true,
+            loginView: false,
         } 
     }
 
     updateView = () => {
         this.setState({loginView: false});
-        
+
 
     }
 

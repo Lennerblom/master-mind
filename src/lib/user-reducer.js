@@ -1,6 +1,6 @@
 import uuid from 'uuid/v4';
 import superagent from 'superagent';
-const url =  'https://tier-board.herokuapp.com/api/v1/user';
+const url =  'https://localhost:3000/signup/';
 // Actions
 export const USER_ADD = 'user/ADD';
 export const USER_ASYNC_ADD = 'user/ASYNC_ADD';

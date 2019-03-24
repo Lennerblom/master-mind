@@ -31,6 +31,13 @@ export default class Login extends Component {
     render() {
         return (
             <div>
+              <nav>
+                <ul>
+                  <li className="nav-li"><a href="/mastermind/">home</a></li>
+                  <li className="nav-li"><a href="/#/instructions">How To Play</a></li>
+                  {/* <li className="nav-li"><a href="/#/login">login</a></li> */}
+                </ul>
+              </nav>
                 <fieldset className="login-form">
                 <form onSubmit={this.onSubmit} onChange={this.onChange}>
                 <label>Username:
@@ -40,8 +47,9 @@ export default class Login extends Component {
                 <label>Password:
                   <input name="password" type="password" value={this.state.password}/>
                 </label>
-
-                <input type="submit" value="Create User" />
+                <label>
+                  <input type="submit" value="Create User" />
+                </label>
             </form>
             </fieldset>
             
