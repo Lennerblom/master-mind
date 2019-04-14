@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+//import bcrypt from 'bcrypt';
 export default class Login extends Component {
     constructor(props) {
         super(props);
@@ -13,15 +14,25 @@ export default class Login extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        //this.props.viewChange();
+        this.props.viewChange();
         this.props.onComplete(this.state); 
         this.setState({...this.defaultState});
     };
     onChange = (e) => {
-      const val =
+      let val =
       e.target.type === "checkbox"
         ? e.target.checked
         : e.target.value;
+    //   if(e.target.type === "password"){
+    //     bcrypt.hash(e.target.value,10)
+    //     .then(hashedPassword => {
+ 
+    //     e.target.value = hashedPassword;
+    //     val = hashedPassword;
+    //     console.log('hashed:', val);
+    //     })
+        
+    //   }
   
     const changedBit = {
       [e.target.name]: val
@@ -31,13 +42,6 @@ export default class Login extends Component {
     render() {
         return (
             <div>
-              <nav>
-                <ul>
-                  <li className="nav-li"><a href="/mastermind/">home</a></li>
-                  <li className="nav-li"><a href="/#/instructions">How To Play</a></li>
-                  {/* <li className="nav-li"><a href="/#/login">login</a></li> */}
-                </ul>
-              </nav>
                 <fieldset className="login-form">
                 <form onSubmit={this.onSubmit} onChange={this.onChange}>
                 <label>Username:
