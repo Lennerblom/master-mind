@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
 // Action Creators
 export const userAdd = (user) => {
   console.log('addReducer', user);
-  user.id = uuid();
+  //user.id = uuid();
   return dispatch => {
     superagent.post(url, user)
       .then(res => {

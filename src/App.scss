@@ -58,8 +58,9 @@ margin-top: 75px;
   position: absolute;
   top: 14%;
   left: 5%;
-  width: 7em;
-  height: 2.3em;
+  // width: 7em;
+  // height: 2.3em;
+  padding: .5em;
   font-size: 16px;
   border-radius: 7em;
   background: transparent;
@@ -83,8 +84,9 @@ margin-top: 75px;
   position: absolute;
   top: 14%;
   right: 5%;
-  width: 5em;
-  height: 2em;
+  // width: 5em;
+  // height: 2em;
+  padding: .5em;
   border-radius: 7em;
   background: transparent;
   font-size: 18px;
@@ -307,25 +309,57 @@ label {
   font-size: 20px;
   margin: 1em auto;
 }
-nav {
-  height: 2.5em;
+// nav {
+//   height: 2.5em;
+// }
+// nav ul {
+//   display: inline-block;
+//   list-style: none;
+//   padding: 0;
+//   height: 2em;
+//   margin-right: 1em;
+// }
+
+// .nav-li {
+//   display: inline-block;
+//   //margin: auto;
+//   padding: 0 3em 1em 3em ;
+// }
+.how-to-play {
+  // width: 7em;
+  // height: 2.3em;
+  padding: .5em;
+  font-size: 16px;
+  border-radius: 7em;
+  background: transparent;
+  border: ridge goldenrod;
+  box-shadow: 2px 2px 10px #000000;
+  text-shadow: 2px 2px 4px #000000;
+  color: goldenrod;
+    &:hover {
+    background: goldenrod;
+    color: black;
+    border: ridge rgb(70, 32, 0);
+    cursor: pointer;
+    }
+    &:active{
+      transform: translateY(2px);
+    }
 }
-nav ul {
+.instructions {
   display: inline-block;
-  list-style: none;
-  padding: 0;
-  height: 2em;
-  margin-right: 1em;
+
+}
+.game{
+  display: inline-block;
 }
 
-.nav-li {
-  display: inline-block;
-  //margin: auto;
-  padding: 0 3em 1em 3em ;
-}
 a {
   color: goldenrod;
   text-shadow: 2px 2px 4px #000000;
   list-style: none;
   text-decoration: none;
+}
+.colortest{
+  color: #d3d3d3;
 }

@@ -5,7 +5,7 @@ import createStore from './lib/store.js';
 import Dashboard from './dashboard';
 import Instructions from './instructions';
 import Game from './game';
-import Login from './login';
+// import Login from './login';
 import './App.scss';
 
 const store = createStore();
@@ -17,18 +17,18 @@ class App extends Component {
 
         <Provider store={store}>
         <HashRouter>
-        <nav>
+        {/* <nav>
             <ul>
             <li className="nav-li"><Link to="/">home</Link></li>
                   <li className="nav-li"><Link to="/instructions">How To Play</Link></li>
               {/* <li className="nav-li"><a href="/#/login">login</a></li> */}
-            </ul>
-          </nav>
+           {/* </ul>
+          </nav> */}
                   <Switch>
                     <Route exact path="/" component={Dashboard}/>
                     <Route exact path="/game" component={Game}/>
                     <Route exact path="/instructions" component={Instructions}/>
-                    <Route exact path="/login" component={Login}/>
+                    {/* <Route exact path="/login" component={Login}/> */}
                   </Switch>
               </HashRouter>
         </Provider>
