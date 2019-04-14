@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Slide from '@material-ui/core/Slide';
 
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'black', 'ivory', 'sienna'];
+const positions = ['pos1', 'pos2', 'pos3', 'pos4', 'pos5'];
 
 let attemptArr = [];
 let totalAttempt = [];
@@ -13,6 +14,8 @@ let color2 = {background:'transparent'};
 let color3 = {background:'transparent'};
 let color4 = {background:'transparent'};
 let color5 = {background:'transparent'};
+let colorSelected = [color1, color2, color3, color4, color5];
+
 let winningMsg = 'You won!';
 
 export default class Game extends Component {
@@ -230,17 +233,8 @@ export default class Game extends Component {
                 </label>
               </div>
             </form>}
-            <div>
-              <button className="colorChoices" onClick={this.selectColor} id="red"></button>
-              <button className="colorChoices" onClick={this.selectColor} id="orange"></button>
-              <button className="colorChoices" onClick={this.selectColor} id="yellow"></button>
-              <button className="colorChoices" onClick={this.selectColor} id="green"></button>
-            </div>
-            <div>
-              <button className="colorChoices" onClick={this.selectColor} id="blue"></button>
-              <button className="colorChoices" onClick={this.selectColor} id="black"></button>
-              <button className="colorChoices" onClick={this.selectColor} id="ivory"></button>
-              <button className="colorChoices" onClick={this.selectColor} id="sienna"></button>
+            <div className='selectColor-container'>
+              {colors.map(color => <button className="colorChoices" onClick={this.selectColor} id={color}></button>)}
             </div>
           </div>
         </div>
