@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'black', 'ivory', 'sienna'];
+
 
 export default class Instructions extends Component {
     render() {
@@ -8,6 +10,9 @@ export default class Instructions extends Component {
             <h2>How to play Mastermind</h2>
             <div className="instructions-paragraph">
               <p>Mastermind is a classic logic game where you try to replicate the hidden color sequence based off of clues provided from each attempt.  The game is won when you successfully place all five colors in the right order.  The hidden solution is randomly selected and may contain any combintion from the eight colors including doubles, triples etc.</p>
+              <div className='selectColor-container'>
+                {colors.map(color => <button className='colorChoices' style={{background: color}}></button>)}
+              </div>
               <p>To begin, click the New Game button.  Click the empty circles and assign each a color from the eight colors at the bottom.  Once all five circles in the attempt area have a color assigned, hit the submit button.
               </p>
               <p>Each attempt is scored with black, white or red pegs.</p> 
