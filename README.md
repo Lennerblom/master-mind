@@ -1,5 +1,7 @@
 # Master Mind
 
+[Click here to play](https://lennerblom.github.io/master-mind)
+
 Mastermind is a classic logic game where you try to replicate the hidden color sequence based off of clues provided from each attempt.  The game is won when you successfully place all five colors in the right order.  The hidden solution is randomly selected and may contain any combintion from the eight colors including doubles, triples etc.
 
 ### How to play
