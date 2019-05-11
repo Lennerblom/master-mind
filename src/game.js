@@ -18,6 +18,7 @@ let color5 = {background:'transparent'};
 
 let winningMsg = 'You won!';
 
+
 export default class Game extends Component {
   constructor(props){
     super(props);
@@ -186,11 +187,12 @@ export default class Game extends Component {
       this.setState({option5: {value: 'transparent', checked: false}});
       color5 = {background: 'transparent'};
     }
+ 
 
     render() {
-
+      let gameView = this.props.gameViewHide;
       return (
-        <div className='main-container'>
+        <div className='main-container' style={{display: {gameView}}}>
           <h2>Mastermind</h2>
 
           <button className='new-game-button' onClick={this.gameStart}>new game</button>
