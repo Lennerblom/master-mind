@@ -194,10 +194,10 @@ export default class Game extends Component {
       return (
         <div className='main-container' style={{display: {gameView}}}>
           <h2>Mastermind</h2>
-
-          <button className='new-game-button' onClick={this.gameStart}>new game</button>
-          <button className='submit-button' onClick={this.submitAttempt}>submit</button>
-
+          <div className='button-container'>
+            <button className='new-game-button' onClick={this.gameStart}>new game</button>
+            <button className='submit-button' onClick={this.submitAttempt}>submit</button>
+          </div>
           <div className='game-board-container'>
 
                 {this.state.hiddenView && <div className='hidden-solution'>{this.state.solution.map(color => <div style={{background: color}} className='colorPosition'></div>)}<h2>{winningMsg}</h2></div>}

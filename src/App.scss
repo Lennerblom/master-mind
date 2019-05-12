@@ -45,6 +45,7 @@ h2 {
   text-shadow: 3px 3px 6px #000000;
   font-size: 3em;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 button {
   margin: 10px 2px 2px 0;
@@ -53,13 +54,17 @@ button {
 .hidden-solution {
 margin-top: 75px; 
 }
-
+.button-container {
+  margin: 10px;
+}
 .new-game-button {
-  position: absolute;
-  top: 14%;
-  left: 5%;
+  // position: absolute;
+  // top: 17%;
+  // left: 5%;
   // width: 7em;
   // height: 2.3em;
+  float: left;
+  margin-left: 5%;
   padding: .5em;
   font-size: 16px;
   border-radius: 7em;
@@ -77,15 +82,24 @@ margin-top: 75px;
     &:active{
       transform: translateY(2px);
     }
+    // @media only screen and (max-width: 505px) {
+    //   top: 2%;
+    // }
 }
 
 
 .submit-button {
-  position: absolute;
-  top: 14%;
-  right: 5%;
+  // position: absolute;
+  // top: 17%;
+  // right: 5%;
+  // @media only screen and (max-width: 505px) {
+  //   position: absolute;
+  //   top: 15%;
+  // }
   // width: 5em;
   // height: 2em;
+  float: right;
+  margin-right: 5%;
   padding: .5em;
   border-radius: 7em;
   background: transparent;
@@ -103,12 +117,13 @@ margin-top: 75px;
     &:active{
       transform: translateY(2px);
     }
+
 }
 // assets/wood-background.jpg
 // assets/wood-wallpapers.jpg
 // assets/lighter-wood.jpg
 html {
-  background-image: url('assets/wood-wallpapers.jpg');
+  background-image: url('assets/wood-wallpapers-compressor.jpg');
 }
 .game-board-container {
 
@@ -190,6 +205,7 @@ label input{
 .attempt-container {
   display: inline-block;
   max-width: 90%;
+  margin-top: 3em;
 }
 .attempt-row {
   display: block;
@@ -219,7 +235,7 @@ ol {
   max-width: 95%;
   margin: auto;
 }
-@media only screen and (max-width: 415px) {
+@media only screen and (max-width: 505px) {
   .colorPicker {
     width: 12vw;
     height: 12vw;
