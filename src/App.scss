@@ -58,13 +58,13 @@ margin-top: 75px;
   margin: 10px;
 }
 .new-game-button {
-  // position: absolute;
-  // top: 17%;
-  // left: 5%;
-  // width: 7em;
-  // height: 2.3em;
-  float: left;
-  margin-left: 5%;
+  position: absolute;
+  top: 19%;
+  left: 5%;
+  width: 7em;
+  height: 2.3em;
+  // float: left;
+  // margin-left: 5%;
   padding: .5em;
   font-size: 16px;
   border-radius: 7em;
@@ -89,17 +89,17 @@ margin-top: 75px;
 
 
 .submit-button {
-  // position: absolute;
-  // top: 17%;
-  // right: 5%;
+  position: absolute;
+  top: 19%;
+  right: 5%;
   // @media only screen and (max-width: 505px) {
   //   position: absolute;
   //   top: 15%;
   // }
   // width: 5em;
   // height: 2em;
-  float: right;
-  margin-right: 5%;
+  // float: right;
+  // margin-right: 2%;
   padding: .5em;
   border-radius: 7em;
   background: transparent;
@@ -128,7 +128,7 @@ html {
 .game-board-container {
 
   max-width: 95%; 
-  margin: auto;
+  margin: 0 px auto;
 }
 .guess-container {
   margin: 1%
@@ -256,10 +256,10 @@ ol {
     margin: 1px;
   }
   .new-game-button {
-    top: 16%;
+    top: 18%;
   }
   .submit-button {
-    top: 16%
+    top: 18%
   }
 }
 
